@@ -3,26 +3,18 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { GoogleGenAI, Type } from "@google/genai";
+import { Type } from "@google/genai";
 import { render } from 'preact';
 import { useState, useEffect, useCallback } from 'preact/hooks';
 import { html } from 'htm/preact';
+import ai from './genaiClient'; // ✅ Importing the GenAI client from separate file
 
 // --- MOCK DATA (to be replaced with Firebase) ---
 const quizQuestions = [/* ... (same as yours) ... */];
 
 const mentors = [/* ... (same as yours) ... */];
 
-// --- ✅ UPDATED API CONFIGURATION ---
-let ai;
-try {
-    ai = new GoogleGenAI({
-        apiKey: import.meta.env.VITE_GOOGLE_API_KEY // ✅ updated to Vite-compatible format
-    });
-} catch (e) {
-    console.error("Failed to initialize GoogleGenAI. VITE_GOOGLE_API_KEY might be missing.", e);
-}
-
+// --- Schema ---
 const careerSchema = {
     type: Type.OBJECT,
     properties: {
@@ -47,11 +39,47 @@ const careerSchema = {
     required: ["careers"]
 };
 
-// --- COMPONENTS ---
+// --- Components (Add your own Header, HomePage, QuizPage, etc.) ---
+// Sample placeholder components below (replace with your own if needed)
+const LoadingState = () => html`<div>Loading...</div>`;
+const ErrorState = ({ message }) => html`<div style="color:red">${message}</div>`;
+const Header = ({ onNavigate, theme, toggleTheme }) => html`
+    <header>
+        <nav>
+            <button onClick=${() => onNavigate("/")}>Home</button>
+            <button onClick=${() => onNavigate("/quiz")}>Quiz</button>
+            <button onClick=${() => onNavigate("/mentors")}>Mentors</button>
+            <button onClick=${toggleTheme}>Toggle Theme (${theme})</button>
+        </nav>
+    </header>
+`;
 
-// ... (KEEP all your components exactly as is: Header, HomePage, QuizPage, etc.)
+const HomePage = ({ onNavigate }) => html`
+    <div>
+        <h1>Welcome to the Career AI Mentor</h1>
+        <button onClick=${() => onNavigate("/quiz")}>Start Quiz</button>
+    </div>
+`;
 
-// --- ✅ JUST UPDATE THIS INSIDE DashboardPage ---
+const QuizPage = ({ onComplete }) => {
+    const [answers, setAnswers] = useState({});
+
+    const handleSubmit = () => {
+        onComplete(answers);
+    };
+
+    return html`
+        <div>
+            <h2>Quiz</h2>
+            <!-- Replace with actual questions -->
+            <button onClick=${handleSubmit}>Submit</button>
+        </div>
+    `;
+};
+
+const MentorsPage = () => html`<div><h2>Mentors</h2><p>Mentor list goes here...</p></div>`;
+
+// --- DashboardPage Component ---
 const DashboardPage = ({ quizAnswers }) => {
     const [results, setResults] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -127,8 +155,7 @@ ${answersText}
     `;
 };
 
-// ... (KEEP rest of your components and render logic same)
-
+// --- App Component ---
 const App = () => {
     const [route, setRoute] = useState(location.hash.slice(1) || '/');
     const [quizAnswers, setQuizAnswers] = useState(null);
@@ -186,4 +213,5 @@ const App = () => {
     `;
 };
 
+// --- Render App ---
 render(html`<${App} />`, document.getElementById('app'));
