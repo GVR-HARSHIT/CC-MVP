@@ -7,7 +7,7 @@ import { Type } from "@google/genai";
 import { render } from 'preact';
 import { useState, useEffect, useCallback } from 'preact/hooks';
 import { html } from 'htm/preact';
-import ai from './genaiClient'; // ✅ Importing the GenAI client from separate file
+import { getGenAIClient } from './genaiClient'; // ✅ Importing the GenAI client from separate file
 
 // --- MOCK DATA (to be replaced with Firebase) ---
 const quizQuestions = [/* ... (same as yours) ... */];
@@ -87,6 +87,7 @@ const DashboardPage = ({ quizAnswers }) => {
 
     useEffect(() => {
         const generateRecommendations = async () => {
+            const ai = getGenAIClient();
             if (!ai) {
                 setError("AI service is not available. Please check API key configuration.");
                 setLoading(false);
