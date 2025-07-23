@@ -1,17 +1,19 @@
 // src/genaiClient.ts
 
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
-let aiInstance: GoogleGenAI | null = null;
+let aiInstance: GoogleGenerativeAI | null = null;
 
-export const getGenAIClient = (): GoogleGenAI => {
+export const getGenAIClient = (): GoogleGenerativeAI => {
   if (!aiInstance) {
     const apiKey = import.meta.env.VITE_GOOGLE_API_KEY;
+
     if (!apiKey) {
-      throw new Error("❌ VITE_GOOGLE_API_KEY is not defined in your environment.");
+      throw new Error("❌ VITE_GOOGLE_API_KEY is not defined in your environment variables.");
     }
 
-    aiInstance = new GoogleGenAI({ apiKey });
+    aiInstance = new GoogleGenerativeAI(apiKey);
   }
+
   return aiInstance;
 };
