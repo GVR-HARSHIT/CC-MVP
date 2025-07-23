@@ -1,30 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>G V R</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="index.css" />
-    <script async src="https://unpkg.com/es-module-shims@1.10.0/dist/es-module-shims.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Company Title -->
+  <title>G V R – Grasp, Vision, Rise</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="index.css" />
+
+  <!-- Module Shim for Import Maps -->
+  <script async src="https://unpkg.com/es-module-shims@1.10.0/dist/es-module-shims.js"></script>
+
+  <!-- Global Form (Optional) -->
+  <!-- G V R – Global Ventures in Reskilling -->
 </head>
 <body>
-    <div id="app"></div>
-    <script type="importmap">
-{
-  "imports": {
-    "@google/genai": "https://esm.run/@google/genai",
-    "preact": "https://esm.sh/preact@10.22.1",
-    "preact/hooks": "https://esm.sh/preact@10.22.1/hooks",
-    "htm/preact": "https://esm.sh/htm@3.1.1/preact",
-    "htm/": "https://esm.sh/htm@^3.1.1/",
-    "preact/": "https://esm.sh/preact@^10.26.9/"
+  <div id="app"></div>
+
+  <!-- Module Import Map -->
+  <script type="importmap">
+  {
+    "imports": {
+      "@google/genai": "https://esm.run/@google/genai",
+      "preact": "https://esm.sh/preact@10.22.1",
+      "preact/hooks": "https://esm.sh/preact@10.22.1/hooks",
+      "htm/preact": "https://esm.sh/htm@3.1.1/preact",
+      "htm/": "https://esm.sh/htm@^3.1.1/",
+      "preact/": "https://esm.sh/preact@^10.26.9/"
+    }
   }
-}
-</script>
-    <script type="module" src="index.tsx"></script>
-<script type="module" src="/index.tsx"></script>
+  </script>
+
+  <!-- App Entry Point -->
+  <script type="module" src="index.tsx"></script>
 </body>
 </html>
