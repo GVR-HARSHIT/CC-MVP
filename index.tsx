@@ -168,7 +168,7 @@ const Header = ({ onNavigate, theme, toggleTheme }) => html`
     <header class="header">
         <div class="nav-container">
             <a href="#/" class="logo" onClick=${(e) => { e.preventDefault(); onNavigate('/'); }}>
-                Career Compass
+                G V R
             </a>
             <div class="nav-links">
                 <a href="#/" onClick=${(e) => { e.preventDefault(); onNavigate('/'); }}>Home</a>
