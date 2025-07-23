@@ -1,6 +1,6 @@
 console.log("API key loaded:", Boolean(import.meta.env.VITE_GOOGLE_API_KEY));
 
-import { GoogleGenerativeAI } from "@google/genai";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 let aiInstance: GoogleGenerativeAI | null = null;
 

@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { Type } from "@google/genai";
+import { SchemaType } from "@google/generative-ai";
 import { render } from 'preact';
 import { useState, useEffect, useCallback } from 'preact/hooks';
 import { html } from 'htm/preact';
@@ -16,20 +16,20 @@ const mentors = [/* ... (same as yours) ... */];
 
 // --- Schema ---
 const careerSchema = {
-    type: Type.OBJECT,
+    type: SchemaType.OBJECT,
     properties: {
         careers: {
-            type: Type.ARRAY,
+            type: SchemaType.ARRAY,
             description: "A list of 3 diverse and personalized career path recommendations.",
             items: {
-                type: Type.OBJECT,
+                type: SchemaType.OBJECT,
                 properties: {
-                    title: { type: Type.STRING, description: "Career path title." },
-                    description: { type: Type.STRING, description: "Short description." },
+                    title: { type: SchemaType.STRING, description: "Career path title." },
+                    description: { type: SchemaType.STRING, description: "Short description." },
                     skills: {
-                        type: Type.ARRAY,
+                        type: SchemaType.ARRAY,
                         description: "List of skills.",
-                        items: { type: Type.STRING }
+                        items: { type: SchemaType.STRING }
                     }
                 },
                 required: ["title", "description", "skills"]
