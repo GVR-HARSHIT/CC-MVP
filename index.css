@@ -391,6 +391,7 @@ main {
     font-weight: 500;
     color: var(--subtle-text);
     max-width: 400px;
+    line-height: 1.6;
 }
 
 /* Dashboard & Mentor Cards */
